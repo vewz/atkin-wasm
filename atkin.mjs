@@ -19,6 +19,7 @@ for (let e, t, n = 0, r = 0; n < g.length; n += 4) {
 }
 
 const { c: u, e: b, g: m, f: w } = await instantiate(f, {
+  __proto__: null,
   a: {
     a(e) {
       const t = p.length;
