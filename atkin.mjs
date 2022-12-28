@@ -1,4 +1,4 @@
-const { RuntimeError, instantiate } = WebAssembly,
+const { RuntimeError, Instance, Module } = WebAssembly,
   { Uint8Array, TypeError } = globalThis,
   { min, max } = Math,
   s = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",
@@ -18,7 +18,7 @@ for (let e, t, n = 0, r = 0; n < g.length; n += 4) {
   f[r++] = ((3 & t) << 6) | (63 & c[i(g, n + 3)]);
 }
 
-const { c: u, e: b, g: m, f: w } = new WebAssembly.Instance(new WebAssembly.Module(f), {
+const { c: u, e: b, g: m, f: w } = new Instance(new Module(f), {
   __proto__: null,
   a: {
     a(e) {
