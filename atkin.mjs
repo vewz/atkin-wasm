@@ -43,11 +43,14 @@ export const getPrimes = (f => {
     if ("number" != typeof max || max < 0 || !isSafeInt(max))
       throw new TypeError("The argument must be a safe positive integer");
     const ptr = alloc(max);
-    calcPrimes(max, ptr);
-    const n = [];
-    for (let i = 0; i < max; i++) if (memoryBuffer[ptr + i]) n[n.length++] = i;
-    free(ptr);
-    return n;
+    try {
+      calcPrimes(max, ptr);
+      const n = [];
+      for (let i = 0; i < max; i++) if (memoryBuffer[ptr + i]) n[n.length++] = i;
+      return n;
+    } finally {
+      free(ptr);
+    }
   };
 
   return getPrimes;
